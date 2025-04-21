@@ -1,0 +1,47 @@
+Last login: Mon Apr 21 22:35:52 on console
+hissam@Hissams-MacBook-Pro ~ % mkdir -p ~/Documents/bicep-deployment/modules
+hissam@Hissams-MacBook-Pro ~ % mkdir -p ~/Documents/bicep-deployment/.github/workflows
+hissam@Hissams-MacBook-Pro ~ % cd ~/Documents/bicep-deployment
+hissam@Hissams-MacBook-Pro bicep-deployment % nano main.bicep
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  UW PICO 5.09                        File: main.bicep                          
+
+module vnetModule 'modules/vnet.bicep' = {
+  name: 'vnetDeployment'
+}
+
+module vmModule 'modules/vm.bicep' = {
+  name: 'vmDeployment'
+}
+
+module storageModule 'modules/storage.bicep' = {
+  name: 'storageDeployment'
+}
+
+module monitorModule 'modules/monitor.bicep' = {
+  name: 'monitorDeployment'
+}
+
+
+
+
+                               [ Wrote 16 lines ]                               
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  

@@ -1,0 +1,23 @@
+name: Simulate Azure Bicep Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Simulate Deployment
+        run: |
+          echo "Simulating Bicep deployment..."
+          echo "Deploying VNETs..."
+          echo "Deploying VMs..."
+          echo "Deploying ZRS Storage Accounts..."
+          echo "Enabling Azure Monitor..."
+          echo "Deployment simulated successfully 🎉"
+
