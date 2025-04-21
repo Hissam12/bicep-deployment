@@ -1,4 +1,4 @@
-name: Simulate Azure Bicep Deployment
+name: Azure Bicep Deployment
 
 on:
   push:
@@ -7,17 +7,26 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Uses the latest Ubuntu environment
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2  # Step to check out your repository code
 
-      - name: Simulate Deployment
-        run: |
-          echo "Simulating Bicep deployment..."
-          echo "Deploying VNETs..."
-          echo "Deploying VMs..."
-          echo "Deploying ZRS Storage Accounts..."
-          echo "Enabling Azure Monitor..."
-          echo "Deployment simulated successfully 🎉"
+    - name: Set up Azure CLI
+      uses: azure/setup-azure-cli@v1  # Sets up Azure CLI on the runner
 
+    - name: Azure login
+      uses: azure/login@v1  # Logs into Azure using the credentials stored in GitHub secrets
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}  # Reference to your Azure credentials in GitHub secrets
+
+    - name: Install Bicep CLI
+      run: |
+        az bicep install  # Installs the Bicep CLI for deployment
+
+    - name: Deploy Bicep template
+      run: |
+        az deployment group create \
+          --resource-group <your-resource-group-name> \
+          --template-file ./modules/vm.bicep  # Path to your Bicep file
