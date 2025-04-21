@@ -1,3 +1,5 @@
+param password string
+
 resource nic1 'Microsoft.Network/networkInterfaces@2021-03-01' = {
   name: 'nic1'
   location: resourceGroup().location
@@ -37,7 +39,7 @@ resource vm1 'Microsoft.Compute/virtualMachines@2021-07-01' = {
     osProfile: {
       computerName: 'vm1'
       adminUsername: 'azureuser'
-      adminPassword: 'Password123!'
+      adminPassword: password
     }
     networkProfile: {
       networkInterfaces: [
@@ -88,7 +90,7 @@ resource vm2 'Microsoft.Compute/virtualMachines@2021-07-01' = {
     osProfile: {
       computerName: 'vm2'
       adminUsername: 'azureuser'
-      adminPassword: 'Password123!'
+      adminPassword: password
     }
     networkProfile: {
       networkInterfaces: [
